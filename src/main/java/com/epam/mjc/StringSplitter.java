@@ -3,6 +3,7 @@ package com.epam.mjc;
 import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class StringSplitter {
 
@@ -14,10 +15,11 @@ public class StringSplitter {
 	 * @return List of substrings
 	 */
 	public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
-		String[] splittedString = source.split(delimiters.toString());
+		String delimitersString = delimiters.toString();
 		List<String> splittedStringList = new ArrayList<>();
-		for (int i = 0; i < splittedString.length; ++i) {
-			splittedStringList.add(splittedString[i]);
+		StringTokenizer tokenizer = new StringTokenizer(source, delimitersString);
+		while (tokenizer.hasMoreTokens()) {
+			splittedStringList.add(tokenizer.nextToken());
 		}
 		return splittedStringList;
 	}
